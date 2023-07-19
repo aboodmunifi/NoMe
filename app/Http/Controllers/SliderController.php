@@ -9,13 +9,14 @@ class SliderController extends Controller
 {
     /**
      * Display a listing of the resource.
+     * 
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
         $slider =slider::all();
-        return view('admin.page.slider.index' ,compact('slider' ,$slider));
+        return view('admin.page.slider.index' ,compact('slider'));
     }
 
     /**

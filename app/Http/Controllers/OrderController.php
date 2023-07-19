@@ -15,17 +15,17 @@ class OrderController extends Controller
     public function index()
     {
         $orders=order::orderBy('id','desc')->get();
-        return view('admin.page.order.index',compact('orders',$orders));
+        return view('admin.page.order.index',compact('orders'));
     }
     public function active()
     {
         $orders=order::orderBy('id','desc')->where('status',1)->get();
-        return view('admin.page.order.active',compact('orders',$orders));
+        return view('admin.page.order.active',compact('orders'));
     }
     public function noactive()
     {
         $orders=order::orderBy('id','desc')->where('status',0)->get();
-        return view('admin.page.order.noactive',compact('orders',$orders));
+        return view('admin.page.order.noactive',compact('orders'));
     }
 
     /**
@@ -99,7 +99,7 @@ class OrderController extends Controller
     public function edit($id)
     {
         $orders=order::find($id);
-        return view('admin.page.order.edit',compact('orders',$orders));
+        return view('admin.page.order.edit',compact('orders'));
 
     }
 

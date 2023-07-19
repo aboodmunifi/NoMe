@@ -51,28 +51,28 @@ class HomeController extends Controller
         $users=User::all()->count();
         $offer=offer::all()->count();
 
-        return view('admin.index',compact('product',$product, 'orders',$orders ,'users',$users ,'offer',$offer));
+        return view('admin.index',compact('product', 'orders','users','offer'));
 
     }
     public function about()
     {
         $categories = category::orderBy('id' , 'desc')->get();
 
-        return view('front.about', compact('categories' ,$categories));
+        return view('front.about', compact('categories'));
     }
     public function products()
     {
         $categories = category::orderBy('id' , 'desc')->get();
 
         $products = product::orderBy('id' , 'desc')->get();
-        return view('front.products',compact('products', $products , 'categories' ,$categories));
+        return view('front.products',compact('products', 'categories'));
     }
     public function categorypage(category $category)
     {
         $categories = category::orderBy('id' , 'desc')->get();
         dd($category->secondCategory->subCategory->id);
         $products = product::orderBy('id' , 'desc')->where('sub_category_id' , $category->secondCategory->subCategory->id)->get();
-        return view('front.products',compact('products', $products , 'categories' ,$categories));
+        return view('front.products',compact('products', 'categories'));
     }
     public function secondCategorypage(SecondCategory $secondCategory){
         $secondCategory = SecondCategory::findOrFail($secondCategory->id);
@@ -80,14 +80,14 @@ class HomeController extends Controller
 
         $products = product::orderBy('id' , 'desc')->get();
         $categories = category::orderBy('id' , 'desc')->get();
-        return view('front.secondCategory',compact('secondCategory' ,$secondCategory ,'products', $products , 'categories' ,$categories));
+        return view('front.secondCategory',compact('secondCategory' ,'products' , 'categories'));
     }
     public function subCategorypage(SubCategory $subCategory){
         $subCategory = SubCategory::findOrFail($subCategory->id);
         $products = product::orderBy('id' , 'desc')->where('sub_category_id' , $subCategory['id'])->get();
         // dd($products);
         $categories = category::orderBy('id' , 'desc')->get();
-        return view('front.products',compact('products', $products , 'categories' ,$categories));
+        return view('front.products',compact('products' , 'categories'));
     }
     public function productpage(product $product)
     {
@@ -96,13 +96,13 @@ class HomeController extends Controller
         $categories = category::orderBy('id' , 'desc')->get();
         $productImages = image::where('product_id' , $product->id)->get();
        // dd($productImages);
-        return view('front.productpage', compact($product , 'product' , $products , 'products' , 'categories' ,$categories , 'productImages' , $productImages));
+        return view('front.productpage', compact('product'  , 'products' , 'categories'  , 'productImages'));
     }
     public function contact()
     {
         $categories = category::orderBy('id' , 'desc')->get();
 
-        return view('front.contact',compact( 'categories' ,$categories));
+        return view('front.contact',compact( 'categories'));
     }
     public function findProduct(Request $request)
 
@@ -120,7 +120,7 @@ class HomeController extends Controller
         $categories = category::orderBy('id' , 'desc')->get();
 
 
-        return view('front.products',compact('products' ,$products ,'categories' ,$categories));
+        return view('front.products',compact('products'  ,'categories' ));
     }
 
 
@@ -170,12 +170,12 @@ class HomeController extends Controller
         $offerProducts = product::where('status_offer' , 1)->get();
         $offers = offer::all();
         $categories = category::orderBy('id' , 'desc')->get();
-        return view('front.offers',compact( 'categories' ,$categories ,'offers' , $offers, 'offerProducts' , $offerProducts ));
+        return view('front.offers',compact( 'categories' ,'offers' , 'offerProducts' ));
     }
 
     public function app(){
         $categories = category::orderBy('id' , 'desc')->get();
 
-        return view('front.app',compact( 'categories' ,$categories ));
+        return view('front.app',compact( 'categories' ));
     }
 }

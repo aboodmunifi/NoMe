@@ -24,7 +24,7 @@ class ProductController extends Controller
 
 
 
-        return view('admin.page.Product.index',compact('products', $products,'categories',$categories));
+        return view('admin.page.Product.index',compact('products','categories'));
 
     }
 
@@ -40,7 +40,7 @@ class ProductController extends Controller
 
         $subCategories=SubCategory::orderBy('id' , 'desc')->get();
 
-        return view('admin.page.Product.create',compact('subCategories',$subCategories));
+        return view('admin.page.Product.create',compact('subCategories'));
     }
 
     /**
@@ -134,7 +134,7 @@ class ProductController extends Controller
         // return $products;
         $subCategories=SubCategory::all();
 
-        return view('admin.page.Product.edit',compact('product', $product,'subCategories',$subCategories));
+        return view('admin.page.Product.edit',compact('product','subCategories'));
 
     }
 

@@ -16,7 +16,7 @@ class UserController extends Controller
     public function index()
     {
         $users=User::all();
-        return view('admin.page.user.index',compact('users',$users));
+        return view('admin.page.user.index',compact('users'));
     }
 
     /**
@@ -63,7 +63,7 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = user::findOrFail($id);
-        return view('admin.page.user.edit',compact('user',$user));
+        return view('admin.page.user.edit',compact('user'));
     }
 
     /**

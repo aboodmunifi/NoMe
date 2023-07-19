@@ -18,7 +18,7 @@ class OfferController extends Controller
        $offers= offer::all();
     //    $offers= offer::with('product')->find(1);
     //    return $offers;
-       return view('admin.page.offer.index',compact('offers',$offers));
+       return view('admin.page.offer.index',compact('offers'));
     }
 
     /**
@@ -31,7 +31,7 @@ class OfferController extends Controller
         $products= product::where('status_offer',0)->get();
     //    $offers= offer::with('product')->find(1);
     //    return $offers;
-       return view('admin.page.offer.create',compact('products',$products));
+       return view('admin.page.offer.create',compact('products'));
     }
 
     /**
