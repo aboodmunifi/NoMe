@@ -40,7 +40,7 @@ class MailController extends Controller
     public  function index()
     {
        $contact= contact::all();
-       return view('admin.page.email.index',compact('contact',$contact));
+       return view('admin.page.email.index',compact('contact'));
 
     }
 }
